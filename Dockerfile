@@ -1,11 +1,12 @@
-FROM debian
+FROM debian:stretch-20200327
 
 # packages
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install -y \
     apache2 \
-    php php-gd php-xml \
+    libapache2-mod-php7.0 \
+    php php-gd php7.0-xml php-curl \
     python-pip python3-pip \
     cron \
     curl \
@@ -13,6 +14,8 @@ RUN apt-get install -y \
     mosquitto-clients \
     nano \
     socat \
+    sudo \
+    bc \
     supervisor
 
 # fix invoke-rc.d: policy-rc.d denied execution of start
